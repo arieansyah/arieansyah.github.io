@@ -2,6 +2,14 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+.name,
+.subtitle,
+.location,
+.headline,
+.section-title {
+	font-weight: 700;
+}
+
 body {
 	width: 100%;
 	margin: 0px;
@@ -602,5 +610,101 @@ body {
 footer {
 	text-align: center;
 	color: white;
-	font-size: 1.2em
+	font-size: 1.2em;
+	margin: 24px 0 32px;
+}
+
+.headline {
+	text-align: center;
+	font-size: 1em;
+	color: cornflowerblue;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	margin: 4px 0 0;
+}
+
+.domicile {
+	text-align: center;
+	color: darkgray;
+	font-size: 0.95em;
+	margin: 12px 7% 0;
+	font-weight: 400;
+}
+
+.contact-line {
+	text-align: center;
+	color: darkgray;
+	font-size: 0.85em;
+	margin: 0 7% 28px;
+	font-weight: 400;
+}
+
+.contact-line a {
+	color: cornflowerblue;
+	text-decoration: none;
+}
+
+.profile-section {
+	text-align: left;
+	margin: 0 7% 22px;
+	color: darkgray;
+	font-weight: 400;
+	font-size: 0.9em;
+	line-height: 1.5;
+}
+
+.profile-section p {
+	margin: 0 0 8px;
+}
+
+.section-title {
+	text-align: left;
+	color: cornflowerblue;
+	font-size: 0.95em;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin: 0 0 10px;
+}
+
+.job {
+	margin-bottom: 14px;
+}
+
+.job-role {
+	font-weight: 600;
+	color: dimgray;
+}
+
+.job-meta {
+	color: darkgray;
+	font-size: 0.92em;
+	margin: 2px 0 6px;
+}
+
+.skill-row {
+	margin: 0;
+	line-height: 1.7;
+}
+
+.project-list,
+.cert-list {
+	margin: 0;
+	padding-left: 1.15em;
+}
+
+.project-list li,
+.cert-list li {
+	margin-bottom: 6px;
+}
+
+.profile-section a {
+	color: cornflowerblue;
+	text-decoration: none;
+}
+
+.fa-envelope:hover,
+.fa-phone:hover {
+	border-radius: 50%;
+	color: white;
+	background-color: cornflowerblue;
 }
