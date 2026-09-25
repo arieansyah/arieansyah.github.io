@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* ---- Design tokens (carried over from the previous site's brand) ---- */
+@theme {
+  --color-bg: #070b16;
+  --color-surface: rgba(148, 163, 216, 0.06);
+  --color-surface-2: rgba(148, 163, 216, 0.11);
+  --color-surface-3: rgba(148, 163, 216, 0.16);
+  --color-border: rgba(148, 163, 216, 0.16);
+  --color-border-strong: rgba(148, 163, 216, 0.32);
+  --color-ink: #e9edf7;
+  --color-muted: #99a3bf;
+  --color-accent: #7c9cff;
+  --color-accent-2: #3ee0d2;
+
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --animate-marquee: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #070b16;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
