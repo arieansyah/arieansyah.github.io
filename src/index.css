@@ -1,47 +1,32 @@
 @import "tailwindcss";
 
-/* ---- Design tokens (carried over from the previous site's brand) ---- */
+/* ---- Design tokens: minimalist light palette (Zinc + blue accent) ---- */
 @theme {
-  --color-bg: #070b16;
-  --color-surface: rgba(148, 163, 216, 0.06);
-  --color-surface-2: rgba(148, 163, 216, 0.11);
-  --color-surface-3: rgba(148, 163, 216, 0.16);
-  --color-border: rgba(148, 163, 216, 0.16);
-  --color-border-strong: rgba(148, 163, 216, 0.32);
-  --color-ink: #e9edf7;
-  --color-muted: #99a3bf;
-  --color-accent: #7c9cff;
-  --color-accent-2: #3ee0d2;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #fafafa;
+  --color-surface: #f4f4f5;
+  --color-border: #e4e4e7;
+  --color-border-strong: #d4d4d8;
+  --color-ink: #18181b;
+  --color-body: #3f3f46;
+  --color-muted: #71717a;
+  --color-accent: #3a52ee;
 
-  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
-
-  --radius-xl: 18px;
-  --radius-2xl: 24px;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
-
-  --animate-marquee: marquee 28s linear infinite;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   background-color: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-body);
+  color: var(--color-body);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -49,12 +34,13 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
+  color: var(--color-ink);
 }
 
 ::selection {
   background: var(--color-accent);
-  color: #070b16;
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {

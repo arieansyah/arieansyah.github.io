@@ -1,6 +1,7 @@
 export const profile = {
   name: 'Arieansyah',
   role: 'Senior Software Engineer',
+  tagline: 'Backend, DevOps & mobile engineer',
   company: 'Roots (Akar Solusi Inovatif)',
   companyUrl: 'http://roots.co.id/',
   location: 'Pangkalan Bun, Kalimantan Tengah, Indonesia',
@@ -9,14 +10,14 @@ export const profile = {
   phoneHref: 'tel:+6282250314988',
   github: 'https://github.com/arieansyah',
   linkedin: 'https://www.linkedin.com/in/arieansyah/',
+  bio: "I design and ship backend services, cloud infrastructure, and mobile products. Currently Senior Software Engineer at Roots, based in Pangkalan Bun, Kalimantan Tengah.",
 }
 
 export const navLinks = [
-  { label: 'Work', href: '#experience' },
-  { label: 'Expertise', href: '#features' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Home', href: '/' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export const features = [
@@ -140,74 +141,6 @@ export const expertise = [
   'MySQL',
   'PostgreSQL',
   'NoSQL (Cassandra)',
-]
-
-export const pricing = [
-  {
-    name: 'Consulting',
-    price: 'Hourly',
-    tagline: 'Architecture reviews, technical due diligence, and unblocking your team.',
-    features: [
-      'Async or live architecture review',
-      'Code & infra audit with a written report',
-      'Tech stack & scaling recommendations',
-      '1–2 week turnaround',
-    ],
-    cta: 'Book a call',
-    highlighted: false,
-  },
-  {
-    name: 'Feature Build',
-    price: 'Fixed scope',
-    tagline: 'A defined feature or service shipped end-to-end, from design to deploy.',
-    features: [
-      'Everything in Consulting',
-      'API, service, or feature built and tested',
-      'CI/CD pipeline included',
-      'Async updates + weekly demo',
-    ],
-    cta: 'Start a project',
-    highlighted: true,
-  },
-  {
-    name: 'Retainer',
-    price: 'Monthly',
-    tagline: 'Ongoing backend, DevOps, or mobile capacity for your product team.',
-    features: [
-      'Everything in Feature Build',
-      'Dedicated hours each month',
-      'Direct Slack/async access',
-      'Priority scheduling',
-    ],
-    cta: 'Get in touch',
-    highlighted: false,
-  },
-] as const
-
-export const faqs = [
-  {
-    question: "You have a full-time role — how do you take on freelance work?",
-    answer:
-      'Freelance and consulting engagements run outside core working hours and are scoped to a fixed number of hours per week, agreed upfront so delivery stays predictable.',
-  },
-  {
-    question: 'What does a typical engagement look like?',
-    answer:
-      'A short scoping call, a written proposal with timeline and cost, then async delivery with regular check-ins — usually a weekly demo or written update.',
-  },
-  {
-    question: 'What stacks do you work in?',
-    answer:
-      'Primarily Go and Node.js for backend/microservices, Laravel/PHP, Flutter for mobile, and Kubernetes/GitHub Actions/Ansible for DevOps. Happy to advise outside this list too.',
-  },
-  {
-    question: 'Do you sign NDAs?',
-    answer: 'Yes — NDAs and standard contractor agreements are no problem for client or company work.',
-  },
-  {
-    question: 'Are you open to remote-only engagements?',
-    answer: 'Yes, all consulting and contract work is remote-first, async-friendly across time zones.',
-  },
 ]
 
 export const education = {
