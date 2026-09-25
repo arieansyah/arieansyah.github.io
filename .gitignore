@@ -6,7 +6,18 @@ npm-debug.log*
 node_modules
 dist
 dist-ssr
+coverage
 *.local
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# AI tooling (local config & generated output)
+.claude/
+graphify-out/
 
 # Editor directories and files
 .vscode/*

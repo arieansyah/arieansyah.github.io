@@ -1,46 +1,310 @@
 @import "tailwindcss";
 
-/* ---- Design tokens: minimalist light palette (Zinc + blue accent) ---- */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---- Design tokens: light palette (dark overrides below) ---- */
 @theme {
   --color-bg: #ffffff;
   --color-bg-subtle: #fafafa;
   --color-surface: #f4f4f5;
   --color-border: #e4e4e7;
   --color-border-strong: #d4d4d8;
-  --color-ink: #18181b;
+  --color-ink: #09090b;
   --color-body: #3f3f46;
-  --color-muted: #71717a;
-  --color-accent: #3a52ee;
+  --color-muted: #6b6b75;
+  --color-accent: #4f5de4;
+  --color-accent-2: #0d9488;
+  --color-success: #16a34a;
+  --color-grid: rgb(9 9 11 / 0.05);
+  /* Syntax highlighting — darker than accent-2/success so they stay readable on --color-surface. */
+  --color-code-string: #0f766e;
+  --color-code-number: #b45309;
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: light;
+:root[data-theme="dark"] {
+  --color-bg: #09090b;
+  --color-bg-subtle: #0e0e11;
+  --color-surface: #18181b;
+  --color-border: #232327;
+  --color-border-strong: #3a3a40;
+  --color-ink: #fafafa;
+  --color-body: #c4c4cc;
+  --color-muted: #8e8e98;
+  --color-accent: #8b9cff;
+  --color-accent-2: #3ee0d2;
+  --color-success: #4ade80;
+  --color-grid: rgb(255 255 255 / 0.045);
+  --color-code-string: #3ee0d2;
+  --color-code-number: #fbbf24;
+  color-scheme: dark;
 }
 
-body {
-  background-color: var(--color-bg);
-  color: var(--color-body);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s var(--ease-brand);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-sans);
-  color: var(--color-ink);
-}
+/* Layered so utility classes (e.g. an arbitrary mask-image) can override them. */
+@layer components {
+  /* ---- Decorative utilities ---- */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 35%, transparent 100%);
+  }
 
-::selection {
-  background: var(--color-accent);
-  color: #ffffff;
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-accent) 10%, var(--color-accent-2) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Cursor-following glow; Card sets --x/--y on pointer move. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      420px circle at var(--x, 50%) var(--y, 50%),
+      color-mix(in oklab, var(--color-accent) 11%, transparent),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.3s var(--ease-brand);
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+  .marquee-wrap:hover .marquee {
+    animation-play-state: paused;
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  /* ---- Blog post body (rendered markdown) ---- */
+  .post-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    overflow-wrap: break-word;
+  }
+  .post-body > * + * {
+    margin-top: 1.25em;
+  }
+  .post-body h2,
+  .post-body h3,
+  .post-body h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    scroll-margin-top: 5rem;
+  }
+  .post-body h2 {
+    margin-top: 2.5em;
+    font-size: 1.5rem;
+  }
+  .post-body h3 {
+    margin-top: 2em;
+    font-size: 1.2rem;
+  }
+  .post-body h4 {
+    margin-top: 1.75em;
+    font-size: 1.05rem;
+  }
+  .post-body strong {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .post-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 40%, transparent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s var(--ease-brand);
+  }
+  .post-body a:hover {
+    text-decoration-color: var(--color-accent);
+  }
+  .post-body ul,
+  .post-body ol {
+    padding-left: 1.5em;
+  }
+  .post-body ul {
+    list-style: disc;
+  }
+  .post-body ol {
+    list-style: decimal;
+  }
+  .post-body li + li {
+    margin-top: 0.4em;
+  }
+  .post-body li::marker {
+    color: var(--color-muted);
+  }
+  .post-body blockquote {
+    border-left: 3px solid var(--color-border-strong);
+    padding-left: 1.1em;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+  .post-body hr {
+    margin-block: 2.5em;
+    border-color: var(--color-border);
+  }
+  .post-body img {
+    height: auto;
+    max-width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+  .post-body table {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 0.95em;
+  }
+  .post-body th,
+  .post-body td {
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.6em 1em 0.6em 0;
+    text-align: left;
+  }
+  .post-body th {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .post-body :not(pre) > code {
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-surface);
+    padding: 0.15em 0.4em;
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    overflow-wrap: anywhere;
+  }
+  .post-body pre {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+    background: var(--color-surface);
+    padding: 1rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    tab-size: 2;
+  }
+  .post-body pre code {
+    font-family: inherit;
+  }
+
+  /* highlight.js token colours */
+  .hljs {
+    color: var(--color-body);
+  }
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-meta {
+    color: var(--color-muted);
+    font-style: italic;
+  }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-doctag,
+  .hljs-template-tag,
+  .hljs-template-variable {
+    color: var(--color-accent);
+  }
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition,
+  .hljs-built_in,
+  .hljs-type {
+    color: var(--color-code-string);
+  }
+  .hljs-number,
+  .hljs-literal,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: var(--color-code-number);
+  }
+  .hljs-title,
+  .hljs-section,
+  .hljs-name,
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-variable,
+  .hljs-property,
+  .hljs-params {
+    color: var(--color-ink);
+  }
+  .hljs-title,
+  .hljs-section {
+    font-weight: 500;
+  }
+  .hljs-deletion {
+    color: #dc2626;
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: 700;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -54,5 +318,28 @@ h4 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .marquee {
+    animation: none;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  :root {
+    color-scheme: light !important;
+  }
+  html,
+  body {
+    background: #ffffff !important;
+  }
+  /* Entrance animations may not have run yet (e.g. printing right after load). */
+  main,
+  main * {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

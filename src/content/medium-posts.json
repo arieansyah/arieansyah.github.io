@@ -1,0 +1,36 @@
+[
+  {
+    "id": "7a3baf24b0c4",
+    "title": "Stop Hardcoding Secrets! Cara Modern Deploy Kubernetes dengan GitHub Actions & Vault",
+    "url": "https://medium.com/@arieansyah/stop-hardcoding-secrets-cara-modern-deploy-kubernetes-dengan-github-actions-vault-7a3baf24b0c4",
+    "date": "2026-01-20T17:43:12.000Z",
+    "description": "Apakah Anda masih menyimpan base64 encoded secrets di dalam Kubernetes Secret manifests? Atau lebih buruk lagi, apakah Anda masih melakukan manajemen environment variables secara manual di setiap…",
+    "tags": [
+      "devops",
+      "github-actions",
+      "kubernetes",
+      "software-engineering",
+      "ci-cd-pipeline"
+    ],
+    "readingMinutes": 3,
+    "category": "Tutorial",
+    "lang": "id"
+  },
+  {
+    "id": "cf5f67998cd7",
+    "title": "Jebakan Singleton di Laravel Octane: Mengapa Aplikasi Anda Bisa Menyajikan “Stale Data”?",
+    "url": "https://medium.com/@arieansyah/jebakan-singleton-di-laravel-octane-mengapa-aplikasi-anda-bisa-menyajikan-stale-data-cf5f67998cd7",
+    "date": "2026-01-20T15:16:48.000Z",
+    "description": "Performance yang jauh lebih cepat adalah alasan utama kita melirik Laravel Octane. Dengan menjalankan aplikasi di atas Swoole atau FrankenPHP, kita menghilangkan overhead bootstrapping framework pada…",
+    "tags": [
+      "yajra-datatables",
+      "laravel",
+      "frankenphp",
+      "web-performance",
+      "laravel-octane"
+    ],
+    "readingMinutes": 4,
+    "category": "Tutorial",
+    "lang": "id"
+  }
+]

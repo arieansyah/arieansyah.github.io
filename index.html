@@ -5,20 +5,54 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arieansyah — Senior Software Engineer</title>
-    <meta name="description" content="Arieansyah, Senior Software Engineer at Roots (Akar Solusi Inovatif). Backend, DevOps, and mobile engineer based in Pangkalan Bun, Kalimantan Tengah." />
-    <meta name="keywords" content="Arieansyah, Software Engineer, Senior Software Engineer, Roots, Laravel, Golang, Flutter, DevOps, Express JS" />
+    <meta name="description" content="Arieansyah, Senior Software Engineer at Roots. Building Go & Node.js microservices on Kubernetes, CI/CD pipelines, Laravel platforms, and Flutter apps since 2019. Open to new opportunities." />
+    <meta name="keywords" content="Arieansyah, Software Engineer, Senior Software Engineer, Backend Engineer, DevOps, Golang, Node.js, Kubernetes, Laravel, Flutter, Indonesia" />
     <meta name="author" content="Arieansyah" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://arieansyah.github.io/" />
     <meta property="og:title" content="Arieansyah — Senior Software Engineer" />
-    <meta property="og:description" content="Backend, DevOps, and mobile engineer building reliable systems." />
-    <meta property="og:image" content="/avatar.jpg" />
+    <meta property="og:description" content="Backend, DevOps & mobile engineer building reliable systems. Open to new opportunities." />
+    <meta property="og:image" content="https://arieansyah.github.io/avatar.jpg" />
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arieansyah",
+        "jobTitle": "Senior Software Engineer",
+        "worksFor": { "@type": "Organization", "name": "Roots (Akar Solusi Inovatif)", "url": "http://roots.co.id/" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Dian Nuswantoro University" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Pangkalan Bun", "addressRegion": "Kalimantan Tengah", "addressCountry": "ID" },
+        "url": "https://arieansyah.github.io/",
+        "image": "https://arieansyah.github.io/avatar.jpg",
+        "sameAs": ["https://github.com/arieansyah", "https://www.linkedin.com/in/arieansyah/"],
+        "knowsAbout": ["Go", "Node.js", "Kubernetes", "DevOps", "Laravel", "Flutter"]
+      }
+    </script>
+
+    <!-- Apply the saved (or system) theme before first paint to avoid a flash. -->
+    <script>
+      (function () {
+        var theme
+        try {
+          theme = localStorage.getItem('theme')
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>

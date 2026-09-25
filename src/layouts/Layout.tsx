@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Outlet, useLocation } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
@@ -22,9 +22,11 @@ export function Layout() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.25, ease: easeBrand }}
-          className="flex-1"
+          className="flex-1 pb-24 print:pb-0"
         >
-          <Outlet />
+          <Suspense fallback={<div className="min-h-[60vh]" />}>
+            <Outlet />
+          </Suspense>
         </motion.main>
       </AnimatePresence>
       <Footer />
